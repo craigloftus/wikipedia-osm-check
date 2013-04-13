@@ -19,4 +19,5 @@ Limitations
 * Categories are looked up using the English language Wikipedia.
 * Regions are limited to those recognised by the OSM Overpass API
 * Place name comparison is quite naïve
+* Does not authenticate with Wikipedia, so limited to 500 entries in a category
 

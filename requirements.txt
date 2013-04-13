@@ -1,3 +1,2 @@
 simplejson
 requests
-mock

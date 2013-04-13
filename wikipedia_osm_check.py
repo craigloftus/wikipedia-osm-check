@@ -8,7 +8,7 @@ class WikipediaOSMCheck(object):
     existing place names in OpenStreetMap.
     """
     _headers = {
-            "User-Agent": "WikipediaOSMCheck v0.1",
+            "User-Agent": "WikipediaOSMCheck v0.1; https://github.com/craigloftus/wikipedia-osm-check/",
         }
     _overpass = {
         "url": "http://overpass-api.de/api/interpreter",

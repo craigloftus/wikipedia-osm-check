@@ -15,7 +15,7 @@ class WikipediaOSMCheck(object):
         "params": {}
         }
     _wikipedia = {
-        "url": "http://en.wikipedia.org/w/api.php",
+        "url": "http://{0}.wikipedia.org/w/api.php",
         "params": {
             "format": "json",
             "action": "query",
@@ -34,10 +34,11 @@ class WikipediaOSMCheck(object):
         "island"
         ]
 
-    def __init__(self):
+    def __init__(self, language):
         self.missing = []
         self.existing = []
         self.places = []
+        self._wikipedia['url'] = self._wikipedia['url'].format(language)
 
     @staticmethod
     def find_missing(expected, existing):
@@ -227,11 +228,13 @@ class WikipediaOSMCheck(object):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('language', type=str, \
+        help="Wikipedia language (ISO language code)")
     parser.add_argument('category', type=str, \
         help="Wikipedia category to check")
     parser.add_argument('region', type=str, \
         help="Region to check within")
     args = vars(parser.parse_args())
 
-    check = WikipediaOSMCheck()
+    check = WikipediaOSMCheck(args['language'])
     check.run(args['category'], args['region'])

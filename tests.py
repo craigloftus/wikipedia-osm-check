@@ -231,7 +231,7 @@ class MockRunWikipediaOSMCheck(wikipedia_osm_check.WikipediaOSMCheck):
         return
     def load_wikipedia_names(self, category_name):
         return self.mock_places
-    def load_existing_names(self, region_name):
+    def load_existing_names(self, region_name, types=None):
         return self.mock_existing
 
 

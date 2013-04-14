@@ -11,6 +11,12 @@ in the Wikipedia category but not in OpenStreetMap (within the region).
 $ ./wikipedia_osm_check.py en Category:Hamlets_in_Oxfordshire Oxfordshire
 ```
 
+You can limit the types of place (village, town etc.) that are checked against in OpenStreetMap using the types option:
+
+```bash
+$ ./wikipedia_osm_check.py -t village en Category:Villages_in_Oxfordshire Oxfordshire
+```
+
 The script lists its dependancies in the requirements.txt file, as is the fashion. It depends
 on the requests library, to make my life easier, and it will also be quicker if you install simplejson.
 

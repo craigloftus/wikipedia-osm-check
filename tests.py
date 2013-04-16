@@ -3,7 +3,7 @@ import wikipedia_osm_check
 
 class TestSanitise(unittest.TestCase):
     def setUp(self):
-        self.obj = wikipedia_osm_check.WikipediaOSMCheck()
+        self.obj = wikipedia_osm_check.WikipediaOSMCheck('en')
 
     def test_dot_removal(self):
         dirty = 'foo.bar.fish.'
@@ -24,7 +24,7 @@ class TestSanitise(unittest.TestCase):
 
 class TestPlaceNameFinding(unittest.TestCase):
     def setUp(self):
-        self.obj = wikipedia_osm_check.WikipediaOSMCheck()
+        self.obj = wikipedia_osm_check.WikipediaOSMCheck('en')
 
     def test_nothing(self):
         place = {'id':12234, 'tags':{}}
@@ -49,7 +49,7 @@ class TestPlaceNameFinding(unittest.TestCase):
 
 class TestPlaceComparison(unittest.TestCase):
     def setUp(self):
-        self.obj = wikipedia_osm_check.WikipediaOSMCheck()
+        self.obj = wikipedia_osm_check.WikipediaOSMCheck('en')
 
     def test_empty_sets(self):
         missing = self.obj.find_missing([], [])
@@ -98,7 +98,7 @@ class MockWikipediaOSMCheck(wikipedia_osm_check.WikipediaOSMCheck):
 
 class TestLoadWikipediaNames(unittest.TestCase):
     def setUp(self):
-        self.obj = MockWikipediaOSMCheck()
+        self.obj = MockWikipediaOSMCheck('en')
 
     def test_loading_names(self):
         self.obj.mock_data = {
@@ -125,7 +125,7 @@ class TestLoadWikipediaNames(unittest.TestCase):
 
 class TestLoadOverpassElements(unittest.TestCase):
     def setUp(self):
-        self.obj = MockWikipediaOSMCheck()
+        self.obj = MockWikipediaOSMCheck('en')
 
     def test_load_elements(self):
         self.obj.mock_data = [
@@ -176,7 +176,7 @@ class MockRequestWikipediaOSMCheck(wikipedia_osm_check.WikipediaOSMCheck):
 
 class TestRequestExisting(unittest.TestCase):
     def setUp(self):
-        self.obj = MockRequestWikipediaOSMCheck()
+        self.obj = MockRequestWikipediaOSMCheck('en')
 
     def test_request_existing(self):
         self.obj.mock_data = {
@@ -237,7 +237,7 @@ class MockRunWikipediaOSMCheck(wikipedia_osm_check.WikipediaOSMCheck):
 
 class TestRun(unittest.TestCase):
     def setUp(self):
-        self.obj = MockRunWikipediaOSMCheck()
+        self.obj = MockRunWikipediaOSMCheck('en')
 
     def test_empty_places(self):
         import sys
